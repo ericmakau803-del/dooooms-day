@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVENGERS: DOOMSDAY | @eehricko webs</title>
+    <style>
+        :root {
+            --doom-green: #00ff41;
+            --dark-metal: #0a0a0a;
+            --accent-red: #ff0000;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-metal);
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes greenGlow {
+            0% { box-shadow: 0 0 5px var(--doom-green); }
+            50% { box-shadow: 0 0 20px var(--doom-green); }
+            100% { box-shadow: 0 0 5px var(--doom-green); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('doom-main.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero img {
+            max-width: 600px;
+            width: 80%;
+            animation: fadeIn 2s ease-in;
+            filter: drop-shadow(0 0 15px var(--doom-green));
+        }
+
+        /* --- Video Section --- */
+        .video-container {
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .video-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+            border-color: var(--doom-green);
+            animation: greenGlow 2s infinite;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-label {
+            padding: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--doom-green);
+        }
+
+        /* --- Image Gallery --- */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            filter: grayscale(50%);
+            transition: 0.5s;
+        }
+
+        .gallery img:hover {
+            filter: grayscale(0%);
+            border: 2px solid var(--doom-green);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px;
+            text-align: center;
+            background: black;
+            border-top: 1px solid var(--doom-green);
+        }
+
+        .credits {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: #555;
+        }
+
+        .signature {
+            color: var(--doom-green);
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <img src="title-logo.jpg" alt="Avengers Doomsday">
+        <p style="margin-top: 20px; letter-spacing: 8px;">THE MULTIVERSE FALLS 2026</p>
+    </section>
+
+    <h2 style="text-align: center; margin-top: 80px; color: var(--doom-green);">THE TRAILER TRIAD</h2>
+    <div class="video-container reveal">
+        <div class="video-card">
+            <video controls poster="thor-hero.jpg">
+                <source src="trailer-part1.mp4" type="video/mp4">
+            </video>
+            <div class="video-label">Part I: The Despair</div>
+        </div>
+        <div class="video-card">
+            <video controls poster="doom-main.jpg">
+                <source src="trailer-part2.mp4" type="video/mp4">
+            </video>
+            <div class="video-label">Part II: The Monarch</div>
+        </div>
+        <div class="video-card">
+            <video controls poster="action-shot.jpg">
+                <source src="trailer-part3.mp4" type="video/mp4">
+            </video>
+            <div class="video-label">Part III: Doomsday</div>
+        </div>
+    </div>
+
+    <div class="gallery reveal">
+        <img src="new-avengers.jpg" alt="The Resistance">
+        <img src="thor-hero.jpg" alt="The Fallen King">
+        <img src="action-shot.jpg" alt="The Blast">
+    </div>
+
+    <footer>
+        <div class="credits">PRODUCED BY</div>
+        <a href="#" class="signature">@eehricko webs</a>
+        <p style="font-size: 0.7rem; color: #444; margin-top: 30px;">© 2026 MARVEL STUDIOS. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // Scroll Reveal Logic
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
